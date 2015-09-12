@@ -1,5 +1,6 @@
 Admin/
 App_Browsers/
+App_Themes/
 
 #App Data contents for the module
 App_Data/*
@@ -11,17 +12,21 @@ App_Data/CMSModules/MAMR.RestHashTracker/Install/
 bin/
 ClientBin/
 CMS_MvcModule/
+CMSAdminControls/
 CMSAPIExamples/
 CMSDependencies/
 CMSDesk/
 CMSEdit/
+CMSFormControls/
 CMSImportFiles/
 CMSInlineControls/
 CMSInstall/
+CMSMasterPages/
 CMSMessages/
 CMSModules/
 CMSPages/
 CMSResources/
+CMSScripts/
 CMSSiteManager/
 CMSSiteUtils/
 CMSTemplates/
@@ -46,7 +51,10 @@ Old_App_Code/CMSModules/*
 
 Old_App_WebReferences/
 PersonalSite/
-Properties/
+Properties/*
+Properties/PublishProfiles/
+!MAMR.RestHashTrackerAssemblyInfo.cs
+
 RugbyWorldCup/
 Views/
 Web References/
