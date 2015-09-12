@@ -1,14 +1,19 @@
 Admin/
 App_Browsers/
-App_Themes/
+
+
 
 #App Data contents for the module
+
 App_Data/*
 !App_Data/CMSModules/
+
 App_Data/CMSModules/*
 !App_Data/CMSModules/MAMR.RestHashTracker/
-App_Data/CMSModules/MAMR.RestHashTracker/Install/
 
+
+App_Start/
+App_Themes/
 bin/
 ClientBin/
 CMS_MvcModule/
@@ -40,6 +45,7 @@ DancingGoat/
 EcommerceSite/
 IntranetPortal/
 Models/
+MamrRestHashes/
 obj/
 
 #CMSModules contents for the module
