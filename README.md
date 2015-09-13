@@ -7,10 +7,10 @@ Kentico allows you to access its native API via hash parameter authentication.  
 This simple module lets you generate authenticated URLs and will store them for reference.  You can also click on the generated authenticated URL to check out the response data.
 
 #### List View
-![List View](https://drive.google.com/file/d/0B8a2mFuEpb2NTFF1NXphRGo1VGc/view?usp=sharing "List View")
+![List View](http://i.imgur.com/HzKxX00.png "List View")
 
 #### Detail View
-![Details View](https://drive.google.com/file/d/0B8a2mFuEpb2NSjhqLTN5TENEMXM/view?usp=sharing "Detail View")
+![Detail View](http://i.imgur.com/bDWNZ33.png "Detail View")
 
 ### Nuget
 * The module [lives here](https://www.nuget.org/packages/MAMR.RestHashTracker/)
