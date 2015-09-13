@@ -22,8 +22,12 @@ public class MamrRestHashTrackerModule : Module
     protected override void OnInit()
     {
         base.OnInit();
+
+        //Events for the HashInfo object.  This is how we handle generating the read only URL on insert and update.
         HashInfo.TYPEINFO.Events.Insert.Before += HashGenerateSecureUrl;
         HashInfo.TYPEINFO.Events.Update.Before += HashGenerateSecureUrl;
+
+        //Couple of custom transformations for the unigrid used in the list view of the REST Hash Tracker module.
         UniGridTransformations.Global.RegisterTransformation("#getresthashtrackerlink", GetRestHashTrackerLink);
         UniGridTransformations.Global.RegisterTransformation("#getresthashtrackertype", GetRestHashTrackerType);
     }
@@ -38,17 +42,17 @@ public class MamrRestHashTrackerModule : Module
         var url = e.Object.GetStringValue("HashUrl", string.Empty);
         var hashSecureUrl = "";
 
-        string urlWithoutHash = URLHelper.RemoveParameterFromUrl(url, "hash");
-        string newUrl = HttpUtility.UrlDecode(urlWithoutHash);
-        string query = URLHelper.GetQuery(newUrl).TrimStart('?');
+        var urlWithoutHash = URLHelper.RemoveParameterFromUrl(url, "hash");
+        var newUrl = HttpUtility.UrlDecode(urlWithoutHash);
+        var query = URLHelper.GetQuery(newUrl).TrimStart('?');
 
         int index = newUrl.IndexOfCSafe("/rest", true);
         if (index >= 0)
         {
-            string domain = URLHelper.GetDomain(newUrl);
+            var domain = URLHelper.GetDomain(newUrl);
             newUrl = URLHelper.RemoveQuery(newUrl.Substring(index));
 
-            string[] rewritten = BaseRESTService.RewriteRESTUrl(newUrl, query, domain, "GET");
+            var rewritten = BaseRESTService.RewriteRESTUrl(newUrl, query, domain, "GET");
             newUrl = rewritten[0].TrimStart('~') + "?" + rewritten[1];
 
             hashSecureUrl += URLHelper.AddParameterToUrl(urlWithoutHash, "hash", RESTService.GetHashForURL(newUrl, domain)) + Environment.NewLine;
@@ -56,12 +60,22 @@ public class MamrRestHashTrackerModule : Module
         }
     }
 
+    /// <summary>
+    /// Create HTML link.
+    /// </summary>
+    /// <param name="parameter">Value from the UniGrid row.</param>
+    /// <returns>HTML Link</returns>
     private static object GetRestHashTrackerLink(object parameter)
     {
         var link = ValidationHelper.GetString(parameter, string.Empty);
         return string.Format("<a href=\"{0}\" target=\"_blank\">Open</a>", link, link);
     }
 
+    /// <summary>
+    /// Generate a response type label.
+    /// </summary>
+    /// <param name="parameter">Value from the UniGrid row.</param>
+    /// <returns>Label - "JSON" or "XML" (default)</returns>
     private static object GetRestHashTrackerType(object parameter)
     {
         var link = ValidationHelper.GetString(parameter, string.Empty);
