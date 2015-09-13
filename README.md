@@ -26,5 +26,8 @@ This simple module lets you generate authenticated URLs and will store them for 
 * Click import module
 * Import in MAMR.RestHashTracker_**X.X.XX**.zip
 
+### Developer Notes
+The module was created keeping all the defaults set by Kentico and starting with a blank web application as suggested in their documentation.  With other modules I have built I have used a class library and kept all code related to the module in there.  This wee module was created more as a test of the export and import process.
+
 ### As Suggested by Kentico...
 > Only use hash parameter authentication for loading data that you want to make publicly available. REST requests with hash authentication can be executed by anyone who obtains the URL (for example by intercepting the web request).
